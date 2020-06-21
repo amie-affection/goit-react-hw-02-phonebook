@@ -1,13 +1,13 @@
 import React from "react";
-import uuid from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import Phonebook from "./phonebook/Phonebook";
-import Contacts from "./contacts/Contacts";
+import ContactList from "./contacts/Contacts";
 
 function App() {
   return (
     <>
       <Phonebook />
-      <Contacts />
+      <ContactList />
     </>
   );
 }
