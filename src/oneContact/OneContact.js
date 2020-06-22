@@ -1,12 +1,12 @@
-// import React from "react";
+import React from "react";
 
-// const OneContact = ({ data: { name, id } }) => {
-//   return (
-//     <li>
-//       <span>{id}</span>
-//       <p>{name}</p>
-//     </li>
-//   );
-// };
+const OneContact = ({ contact }) => {
+  return (
+    <li>
+      <span>{contact.name}: </span>
+      <span>{contact.number}</span>
+    </li>
+  );
+};
 
-// export default OneContact;
+export default OneContact;

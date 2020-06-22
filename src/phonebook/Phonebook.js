@@ -1,34 +1,31 @@
-// import React, { Component } from "react";
-// import styles from "./Phonebook.module.css";
+import React, { Component } from "react";
+import styles from "./Phonebook.module.css";
 
-// class Phonebook extends Component {
-//   reader = () => {
-//     const contact = {
-//       name: [this.state.name],
-//     };
-//     this.setState((prev) => {
-//       return {
-//         contacts: [...prev.contacts, contact],
-//       }
-//   })
-//   };
+class Phonebook extends Component {
+  render() {
+    console.log(this.props);
+    return (
+      <form onSubmit={this.props.onSubmit}>
+        <h2>Name</h2>
 
-//   inputValue = (e) => {
-//     this.setState({ name: e.target.value });
-//     // console.log(e.target.value);
-//   };
+        <input
+          type="text"
+          name="name"
+          value={this.props.name}
+          onChange={this.props.onChange}
+        ></input>
 
-//   render() {
-//     return (
-//       <form onSubmit={this.reader}>
-//         <h2>Name</h2>
-//         <input onChange={this.inputValue}></input>
-//         <button type="submit" className={styles.btn}>
-//           Add contact
-//         </button>
-//       </form>
-//     );
-//   }
-// }
+        <input
+          type="tel"
+          name="number"
+          value={this.props.number}
+          onChange={this.props.onChange}
+        ></input>
 
-// export default Phonebook;
+        <button type="submit">Add contact</button>
+      </form>
+    );
+  }
+}
+
+export default Phonebook;
