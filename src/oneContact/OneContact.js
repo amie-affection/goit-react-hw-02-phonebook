@@ -1,10 +1,18 @@
 import React from "react";
+import styles from "./OneContact.module.css";
 
-const OneContact = ({ contact }) => {
+const OneContact = ({ contact: { id, name, number }, deleteContact }) => {
   return (
     <li>
-      <span>{contact.name}: </span>
-      <span>{contact.number}</span>
+      <span>{name}: </span>
+      <span>{number}</span>
+      <button
+        type="button"
+        className={styles.btnDelete}
+        onClick={() => deleteContact(id)}
+      >
+        Delete
+      </button>
     </li>
   );
 };

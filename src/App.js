@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Phonebook from "./phonebook/Phonebook";
-import ContactList from "./contacts/Contacts";
+import ContactList from "./contactList/ContactList";
 
 class App extends Component {
   state = {
@@ -25,11 +25,16 @@ class App extends Component {
       name: this.state.name,
       number: this.state.number,
     };
-    this.setState((prev) => {
-      return {
-        contacts: [...prev.contacts, contact],
-      };
-    });
+    this.state.contacts.find(
+      ({ name }) => name === contact.name && contact.name
+    )
+      ? alert(`${contact.name} already exists`)
+      : this.setState((prev) => {
+          return {
+            contacts: [...prev.contacts, contact],
+          };
+        });
+    this.setState({ name: "", number: "" });
   };
 
   handleChange = (e) => {
@@ -42,6 +47,14 @@ class App extends Component {
     return this.state.contacts.filter((contact) =>
       contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
+  };
+
+  deleteContact = (id) => {
+    this.setState((prev) => {
+      return {
+        contacts: prev.contacts.filter((contact) => contact.id !== id),
+      };
+    });
   };
 
   render() {
@@ -61,6 +74,7 @@ class App extends Component {
           contacts={filterContact}
           filter={filter}
           onChange={this.handleChange}
+          deleteContact={this.deleteContact}
         />
       </>
     );

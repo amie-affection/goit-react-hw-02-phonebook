@@ -2,3 +2,9 @@
     display: block;
     margin-top: 15px;
 }
+
+.inputName,
+.inputNumber {
+    display: block;
+    margin-bottom: 15px;
+}
